@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player
 {
@@ -14,18 +15,47 @@ public class Player
 
     public void playTurn()
     {
-        //do stuff
+        Scanner scanner = new Scanner("HIT OR MISS");
+        String userInput = scanner.nextLine();
+
     }
 
-    public void hit()
+    public void hit(Deck deck)
     {
-        //do stuff
+        Card newCard = deck.getTopCard();
+        this.hand.add(newCard);
     }
 
     public int getHandValue()
     {
-        //do stuff
-        return 1;
+        int totalValue = 0;
+        int aceCount = 0;
+        for(Card card : hand)
+        {
+            int carValue = card.getCardValue();
+            totalValue =+ carValue;
+            if (carValue == 11)
+            {
+                aceCount++;
+            }
+        }
+        while (aceCount > 0)
+        {
+            if (totalValue > 21)
+            {
+              totalValue = totalValue - 10;
+              aceCount --;
+              
+            }
+            else
+            {
+                aceCount = 0;
+            }
+        
+            
+        }
+        return totalValue;
+        
     }
 
     public void getCard(Deck deck)
