@@ -13,10 +13,22 @@ public class Player
         this.money = 100;
     }
 
-    public void playTurn()
+    public void playTurn(Deck deck)
     {
-        Scanner scanner = new Scanner("HIT OR MISS");
-        String userInput = scanner.nextLine();
+        Scanner scannerTurn = new Scanner(System.in);
+        System.out.println("hit or stay?");
+        String userInput = scannerTurn.nextLine();
+        userInput.toLowerCase();
+
+        if (userInput == "hit")
+        {
+            this.hit(deck);
+        }
+        else
+        {
+            return;
+
+        }
 
     }
 
