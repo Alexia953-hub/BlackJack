@@ -29,7 +29,26 @@ public class Run {
 
         for (int i = 0; i <= players.size(); i++)
         {
-            
+            Player current = players.get(i);
+            current.playTurn(deck);
+            if (current.getHandValue() > 21)
+            {
+                System.out.println("haha you suck");
+                // take their money
+            }
+            else if (current.getHandValue() == 21)
+            {
+                System.out.println("I guess you won");
+                // 1.5 x on the bet
+            }
+            //if players hand equals dealers hand than no money is lost
+
+
+            else
+            {
+                //u can win
+            }
+
         }
 
 

@@ -23,6 +23,10 @@ public class Player
         if (userInput == "hit")
         {
             this.hit(deck);
+            if (this.getHandValue() > 21)
+            {
+                return;
+            }
         }
         else
         {
