@@ -7,6 +7,7 @@ public class Run {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many players?");
         int playersNum = scanner.nextInt();
+
         
 
         
@@ -21,34 +22,30 @@ public class Run {
 
             Player player = new Player(playerName);
             players.add(player);
-            
-            player.hit(deck);
-            player.hit(deck);
 
         }
-
-        for (int i = 0; i <= players.size(); i++)
+        Dealer superCoolDealer = new Dealer();
+        boolean gameHappening = true;
+        while (gameHappening = true)
         {
-            Player current = players.get(i);
-            current.playTurn(deck);
-            if (current.getHandValue() > 21)
-            {
-                System.out.println("haha you suck");
-                // take their money
-            }
-            else if (current.getHandValue() == 21)
-            {
-                System.out.println("I guess you won");
-                // 1.5 x on the bet
-            }
-            //if players hand equals dealers hand than no money is lost
+            superCoolDealer.dealerHit(deck);
+            superCoolDealer.dealerHit(deck);
 
-
-            else
+            for (Player player: players)
             {
-                //u can win
+                player.setBet();
+                player.hit(deck);
+                player.hit(deck);
             }
-
+        }
+       
+        for (Player player : players)
+        {
+           player.playTurn(deck);
+           player.handleBet(superCoolDealer.get(dealerHandVal()));
+    
+        }
+        gameHappening = false;
         }
 
 

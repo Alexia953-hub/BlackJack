@@ -5,6 +5,7 @@ public class Player
 {
     private String name;
     private double money;
+    private double bet;
     private ArrayList<Card> hand = new ArrayList<>();
 
     public Player(String name)
@@ -77,5 +78,61 @@ public class Player
     public void getCard(Deck deck)
     {
         //do stuff
+    }
+
+    public void setBet()
+    {
+        boolean bets = false;
+        while (bets = false)
+        {
+        Scanner betterR = new Scanner(System.in);
+        System.out.println("bet? you have " + money);
+        double bet2 = betterR.nextDouble();
+        betterR.nextLine();
+
+        if (bet2 <= this.money)
+        {
+            this.bet = bet2;
+            bets= true;
+        }
+        else
+        {
+            System.out.println("this is invalid what are you doing");
+            System.out.println("press that enter key");
+            betterR.nextLine();
+        }
+        }
+    }
+
+    public void handleBet(int dealerHandVal)
+    {
+        if (getHandValue() > 21)
+        {
+            System.out.println("you suck");
+            this.money = money-this.bet;
+
+        }
+        else if (getHandValue() == dealerHandVal)
+        {
+            System.out.println("tie");
+        }
+        else if (getHandValue() == 21)
+        {
+            System.out.println("only took you a few tries to win");
+            this.bet = bet * 1.5;
+            this.money += this.bet;
+        }
+
+        else if (getHandValue() < dealerHandVal)
+        {
+             System.out.println("you suck");
+             this.money -= this.bet;
+        }
+
+        else
+        {
+            System.out.println("you won!!!");
+            this.money += this.bet;
+        }
     }
 }
