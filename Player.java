@@ -75,25 +75,25 @@ public class Player
         
     }
 
-    public void getCard(Deck deck)
+    public double getMoney()
     {
-        //do stuff
+       return this.money;
     }
 
     public void setBet()
     {
-        boolean bets = false;
-        while (bets = false)
+        boolean bet = false;
+        while (bet == false)
         {
         Scanner betterR = new Scanner(System.in);
         System.out.println("bet? you have " + money);
-        double bet2 = betterR.nextDouble();
+        Double bet2 = betterR.nextDouble();
         betterR.nextLine();
 
         if (bet2 <= this.money)
         {
             this.bet = bet2;
-            bets= true;
+            break;
         }
         else
         {
@@ -134,5 +134,6 @@ public class Player
             System.out.println("you won!!!");
             this.money += this.bet;
         }
+        System.out.println("you have this" + this.money + "much money left");
     }
 }

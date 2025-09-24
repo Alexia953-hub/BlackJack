@@ -28,24 +28,51 @@ public class Run {
         boolean gameHappening = true;
         while (gameHappening = true)
         {
-            superCoolDealer.dealerHit(deck);
-            superCoolDealer.dealerHit(deck);
+            superCoolDealer.firstDealerHit(deck);
+            superCoolDealer.dealerHit2nd(deck);
+            System.out.println("hi");
+
 
             for (Player player: players)
             {
                 player.setBet();
+                System.out.println("hi");
                 player.hit(deck);
+                // System.out.println("player" + player + "has value" + player.getHandValue());
                 player.hit(deck);
+                // System.out.println("player" + player + "has value" + player.getHandValue());
             }
-        }
-       
+
+        
+        superCoolDealer.dealerTurn(deck);
         for (Player player : players)
         {
-           player.playTurn(deck);
-           player.handleBet(superCoolDealer.get(dealerHandVal()));
+           System.out.println("hi");
+            player.playTurn(deck);
     
         }
-        gameHappening = false;
+        superCoolDealer.dealerTurn(deck);
+
+        for (Player player : players)
+        {
+            player.handleBet(superCoolDealer.dealerHandVal());
+            if (player.getMoney() == 0)
+            {
+                gameHappening = false;
+            }
+            else
+            {
+                 Scanner scannerPlayer = new Scanner(System.in);
+            System.out.println("want to keep playing? y/n");
+            String playerChoice = scannerPlayer.nextLine();
+            playerChoice.toLowerCase();
+            if (playerChoice.equals("n"))
+            {
+                gameHappening = false;
+            }
+            }
+        }
+        
         }
 
 
@@ -57,3 +84,4 @@ public class Run {
         // }
     }
 }
+
