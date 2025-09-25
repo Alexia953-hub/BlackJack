@@ -16,31 +16,42 @@ public class Player
 
     public void playTurn(Deck deck)
     {
-        Scanner scannerTurn = new Scanner(System.in);
-        System.out.println("hit or stay?");
-        String userInput = scannerTurn.nextLine();
-        userInput.toLowerCase();
-
-        if (userInput == "hit")
+        boolean going = true;
+        while (going == true)
         {
-            this.hit(deck);
-            if (this.getHandValue() > 21)
+            Scanner scannerTurn = new Scanner(System.in);
+            System.out.println("hit or stay?");
+            String userInput = scannerTurn.nextLine();
+            userInput.toLowerCase();
+
+            if (userInput == "hit")
             {
-                return;
+                this.hit(deck);
+                if (this.getHandValue() > 21)
+                {
+                    System.out.println("youre over 21");
+                    break;
+                }
             }
-        }
-        else
-        {
-            return;
+            else
+            {
+                break;
 
-        }
-
+            }
+    }
     }
 
     public void hit(Deck deck)
     {
         Card newCard = deck.getTopCard();
         this.hand.add(newCard);
+    }
+
+    public void getDeal(Deck deck)
+    {
+        this.hand = new ArrayList<Card>();
+        this.hit(deck);
+        this.hit(deck);
     }
 
     public int getHandValue()
@@ -50,7 +61,7 @@ public class Player
         for(Card card : hand)
         {
             int carValue = card.getCardValue();
-            totalValue =+ carValue;
+            totalValue = totalValue + carValue;
             if (carValue == 11)
             {
                 aceCount++;
@@ -112,6 +123,11 @@ public class Player
             this.money = money-this.bet;
 
         }
+        else if (dealerHandVal > 21)
+        {
+             System.out.println("you won!!!");
+            this.money = this.money + this.bet;
+        }
         else if (getHandValue() == dealerHandVal)
         {
             System.out.println("tie");
@@ -120,19 +136,19 @@ public class Player
         {
             System.out.println("only took you a few tries to win");
             this.bet = bet * 1.5;
-            this.money += this.bet;
+            this.money = this.money - this.bet;
         }
 
         else if (getHandValue() < dealerHandVal)
         {
              System.out.println("you suck");
-             this.money -= this.bet;
+             this.money = this.money - this.bet;
         }
 
         else
         {
             System.out.println("you won!!!");
-            this.money += this.bet;
+            this.money = this.money + this.bet;
         }
         System.out.println("you have this" + this.money + "much money left");
     }

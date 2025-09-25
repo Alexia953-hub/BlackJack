@@ -30,48 +30,42 @@ public class Run {
         {
             superCoolDealer.firstDealerHit(deck);
             superCoolDealer.dealerHit2nd(deck);
-            System.out.println("hi");
+
 
 
             for (Player player: players)
             {
                 player.setBet();
-                System.out.println("hi");
-                player.hit(deck);
-                // System.out.println("player" + player + "has value" + player.getHandValue());
-                player.hit(deck);
-                // System.out.println("player" + player + "has value" + player.getHandValue());
+                player.getDeal(deck);
             }
 
-        
-        superCoolDealer.dealerTurn(deck);
-        for (Player player : players)
-        {
-           System.out.println("hi");
-            player.playTurn(deck);
-    
-        }
-        superCoolDealer.dealerTurn(deck);
 
-        for (Player player : players)
-        {
-            player.handleBet(superCoolDealer.dealerHandVal());
-            if (player.getMoney() == 0)
+            for (Player player : players)
             {
-                gameHappening = false;
+                player.playTurn(deck);
+                System.out.println(player.getHandValue());
             }
-            else
+            superCoolDealer.dealerTurn(deck);
+
+            for (Player player : players)
             {
-                 Scanner scannerPlayer = new Scanner(System.in);
-            System.out.println("want to keep playing? y/n");
-            String playerChoice = scannerPlayer.nextLine();
-            playerChoice.toLowerCase();
-            if (playerChoice.equals("n"))
-            {
-                gameHappening = false;
+                player.handleBet(superCoolDealer.dealerHandVal());
+                if (player.getMoney() == 0)
+                {
+                    players.remove(player);
+                }
+                else
+                {
+                    Scanner scannerPlayer = new Scanner(System.in);
+                    System.out.println("want to keep playing? y/n");
+                    String playerChoice = scannerPlayer.nextLine();
+                    playerChoice.toLowerCase();
+                    if (playerChoice.equals("n"))
+                    {
+                        gameHappening = false;
+                    }
+                }
             }
-            }
-        }
         
         }
 

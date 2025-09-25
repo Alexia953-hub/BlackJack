@@ -44,7 +44,7 @@ public class Dealer extends Player
         for(Card card : dealerHand)
         {
             int carValue = card.getCardValue();
-            totalValue =+ carValue;
+            totalValue = totalValue + carValue;
             if (carValue == 11)
             {
                 aceCount++;
@@ -74,7 +74,7 @@ public class Dealer extends Player
         for(Card card : dealerHand)
         {
             int carValue = card.getCardValue();
-            totalValue =+ carValue;
+            totalValue = totalValue + carValue;
             if (carValue == 11)
             {
                 aceCount++;
@@ -84,7 +84,6 @@ public class Dealer extends Player
         {
             if (totalValue > 21)
                 {
-                totalValue = totalValue - 10;
                 return false;
                 
                 }
@@ -93,19 +92,21 @@ public class Dealer extends Player
                     return true;
                 }
             }
-            return false;
+        return false;
     }
 
     
 
     public void dealerTurn(Deck deck)
     {
-        while (dealerHandVal()< 17 || dealerHandVal() == 17 && haveAces() == true)
+        while (dealerHandVal() < 17 || dealerHandVal () == 17 && haveAces() == true )
         {
             dealerHit(deck);
         }
 
     
     }
+
+    // dealerHandVal() < 17 || dealerHandVal() == 17
 
 }
