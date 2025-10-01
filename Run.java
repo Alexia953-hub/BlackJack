@@ -43,7 +43,7 @@ public class Run {
             for (Player player : players)
             {
                 player.playTurn(deck);
-                System.out.println(player.getHandValue());
+                System.out.println(player.getHandValue() + player.playerName());
             }
             superCoolDealer.dealerTurn(deck);
 

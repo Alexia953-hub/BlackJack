@@ -14,24 +14,41 @@ public class Player
         this.money = 100;
     }
 
+    public String playerName()
+    {
+        return this.name;
+    }
+
+    public void playerHandVal()
+    {
+        System.out.println(name + " currently has " + getHandValue());
+    }
+
     public void playTurn(Deck deck)
     {
         boolean going = true;
         while (going == true)
         {
+            playerHandVal();
             Scanner scannerTurn = new Scanner(System.in);
             System.out.println("hit or stay?");
             String userInput = scannerTurn.nextLine();
             userInput.toLowerCase();
 
-            if (userInput == "hit")
+            if (userInput.equals("hit"))
             {
                 this.hit(deck);
+
                 if (this.getHandValue() > 21)
                 {
                     System.out.println("youre over 21");
                     break;
                 }
+            }
+            else if (getHandValue() > 21)
+            {
+                System.out.println("broken busted");
+                break;
             }
             else
             {
@@ -45,6 +62,7 @@ public class Player
     {
         Card newCard = deck.getTopCard();
         this.hand.add(newCard);
+
     }
 
     public void getDeal(Deck deck)
@@ -119,13 +137,13 @@ public class Player
     {
         if (getHandValue() > 21)
         {
-            System.out.println("you suck");
+            System.out.println("you went over 21 " + this.name);
             this.money = money-this.bet;
 
         }
         else if (dealerHandVal > 21)
         {
-             System.out.println("you won!!!");
+             System.out.println("you won dealer busted!" + this.name);
             this.money = this.money + this.bet;
         }
         else if (getHandValue() == dealerHandVal)
@@ -134,22 +152,22 @@ public class Player
         }
         else if (getHandValue() == 21)
         {
-            System.out.println("only took you a few tries to win");
+            System.out.println("only took you a few tries to win " + this.name);
             this.bet = bet * 1.5;
             this.money = this.money - this.bet;
         }
 
         else if (getHandValue() < dealerHandVal)
         {
-             System.out.println("you suck");
+             System.out.println("dealer had better value" + dealerHandVal + this.name);
              this.money = this.money - this.bet;
         }
 
         else
         {
-            System.out.println("you won!!!");
+            System.out.println("you won!!! " + this.name);
             this.money = this.money + this.bet;
         }
-        System.out.println("you have this" + this.money + "much money left");
+        System.out.println("you have this " + this.money + "much money left");
     }
 }
