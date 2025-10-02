@@ -154,7 +154,7 @@ public class Player
         {
             System.out.println("only took you a few tries to win " + this.name);
             this.bet = bet * 1.5;
-            this.money = this.money - this.bet;
+            this.money = this.money + this.bet;
         }
 
         else if (getHandValue() < dealerHandVal)

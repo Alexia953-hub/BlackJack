@@ -26,10 +26,9 @@ public class Run {
         }
         Dealer superCoolDealer = new Dealer();
         boolean gameHappening = true;
-        while (gameHappening = true)
+        while (gameHappening == true)
         {
-            superCoolDealer.firstDealerHit(deck);
-            superCoolDealer.dealerHit2nd(deck);
+            superCoolDealer.getDeal(deck);
 
 
 

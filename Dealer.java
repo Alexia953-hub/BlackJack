@@ -16,26 +16,12 @@ public class Dealer extends Player
     {
         Card newCard = deck.getTopCard();
         this.dealerHand.add(newCard);
+        System.out.println(dealerHand);
+
 
 
     }
     
-
-
-
-    public void dealerHit(Deck deck)
-    {
-        Card newCard = deck.getTopCard();
-        this.dealerHand.add(newCard);
-        System.out.println(dealerHand);
-    }
-
-    public void dealerHit2nd(Deck deck)
-    {
-        Card newCard = deck.getTopCard();
-        this.dealerHand.add(newCard);
-        System.out.println("the dealer is showing" + newCard);
-    }
 
     public int dealerHandVal()
     {
@@ -101,10 +87,21 @@ public class Dealer extends Player
     {
         while (dealerHandVal() < 17 || dealerHandVal () == 17 && haveAces() == true )
         {
-            dealerHit(deck);
+            firstDealerHit(deck);
         }
 
     
+    }
+
+    public void getDealer(Deck deck)
+    {
+        this.dealerHand = new ArrayList<Card>();
+        Card newCard = deck.getTopCard();
+        this.dealerHand.add(newCard);
+        
+        Card newCard2 = deck.getTopCard();
+        this.dealerHand.add(newCard2);
+        System.out.println("the dealer is showing" + newCard2);
     }
 
     // dealerHandVal() < 17 || dealerHandVal() == 17
