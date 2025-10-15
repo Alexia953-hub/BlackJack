@@ -28,7 +28,8 @@ public class Run {
         boolean gameHappening = true;
         while (gameHappening == true)
         {
-            superCoolDealer.getDeal(deck);
+            superCoolDealer.getDealer(deck);
+            System.out.println("dealer should be showing cards");
 
 
 
@@ -49,21 +50,29 @@ public class Run {
             for (Player player : players)
             {
                 player.handleBet(superCoolDealer.dealerHandVal());
-                if (player.getMoney() == 0)
+            }
+            
+
+            for (int i = players.size()-1; i>=0; i--)
+            {
+                Player player = players.get(i);
+                
+                if (player.getMoney() == 0.00)
                 {
-                    players.remove(player);
+                    System.out.println(player.playerName() + " you lost lol");
+                    players.remove(i);
                 }
-                else
-                {
-                    Scanner scannerPlayer = new Scanner(System.in);
-                    System.out.println("want to keep playing? y/n");
-                    String playerChoice = scannerPlayer.nextLine();
-                    playerChoice.toLowerCase();
-                    if (playerChoice.equals("n"))
-                    {
-                        gameHappening = false;
-                    }
-                }
+                // else
+                // {
+                //     Scanner scannerPlayer = new Scanner(System.in);
+                //     System.out.println("want to keep playing? y/n");
+                //     String playerChoice = scannerPlayer.nextLine();
+                //     playerChoice.toLowerCase();
+                //     if (playerChoice.equals("n"))
+                //     {
+                //         gameHappening = false;
+                //     }
+                // }
             }
         
         }

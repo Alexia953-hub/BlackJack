@@ -21,7 +21,7 @@ public class Player
 
     public void playerHandVal()
     {
-        System.out.println(name + " currently has " + getHandValue());
+        System.out.println(this.name + " currently has " + getHandValue());
     }
 
     public void playTurn(Deck deck)
@@ -41,13 +41,13 @@ public class Player
 
                 if (this.getHandValue() > 21)
                 {
-                    System.out.println("youre over 21");
+                    System.out.println(this.name + " over 21");
                     break;
                 }
             }
             else if (getHandValue() > 21)
             {
-                System.out.println("broken busted");
+                System.out.println( this.name + " busted");
                 break;
             }
             else
@@ -143,7 +143,7 @@ public class Player
         }
         else if (dealerHandVal > 21)
         {
-             System.out.println("you won dealer busted!" + this.name);
+             System.out.println("you won dealer busted! " + this.name);
             this.money = this.money + this.bet;
         }
         else if (getHandValue() == dealerHandVal)
@@ -159,15 +159,15 @@ public class Player
 
         else if (getHandValue() < dealerHandVal)
         {
-             System.out.println("dealer had better value" + dealerHandVal + this.name);
+             System.out.println("dealer had better value " + dealerHandVal + " " + this.name);
              this.money = this.money - this.bet;
         }
 
         else
         {
-            System.out.println("you won!!! " + this.name);
+            System.out.println(this.name + " won!!! " );
             this.money = this.money + this.bet;
         }
-        System.out.println("you have this " + this.money + "much money left");
+        System.out.println(this.name + " have this " + this.money + "much money left");
     }
 }
